@@ -1,44 +1,27 @@
-local ldtk = require 'libs.ldtk'
-local bump = require 'libs.bump'
-local bump_debug = require 'libs.bump_debug'
+require 'code.libs'
 
-local layers = {}
-local world = bump.newWorld(18)
+local gamescene = require 'code.scenes.game'
+
+CELL_SIZE = 18
+
+local systems = {}
+ecs.utils.loadNamespace('code/components')
+ecs.utils.loadNamespace('code/systems', systems)
+
+scene_manager = roomy.new()
+physics_world = bump.newWorld(CELL_SIZE)
+ecs_world = ecs.world()
+
+ecs_world:addSystems(systems.debug_shapes, systems.movement, systems.player)
 
 function love.load()
-    --resizing the screen to 512px width and 512px height
-    love.window.setMode(512, 512)
-
-    --setting up the project for pixelart
+    love.window.setMode(768, 768, { resizable = true })
     love.graphics.setDefaultFilter('nearest', 'nearest')
-    love.graphics.setLineStyle('rough')
-
-    ldtk:load('assets/world.ldtk')
-
-    function ldtk.layer(layer)
-        if layer.identifier == "Tiles" then
-            for _, tile in ipairs(layer.tiles) do
-                local x, y = tile.px[1], tile.px[2]
-                world:add(tile, x, y, 18, 18)
-            end
-        end
-        table.insert(layers, layer) --adding layer to the table we use to draw 
-    end
-
-    function ldtk.onLevelLoad(level)
-        layers = {}
-        love.graphics.setBackgroundColor(level.bgColor)
-    end
-
-    ldtk:goTo(1)
+    push.setupScreen(256, 256, { upscale = 'normal' })
+    scene_manager:hook()
+    scene_manager:enter(gamescene)
 end
 
-function love.draw()
-    love.graphics.scale(2, 2)
-
-    for _, layer in ipairs(layers) do
-        layer:draw()
-    end
-
-    --bump_debug.draw(world)
+function love.resize(width, height)
+	push.resize(width, height)
 end
