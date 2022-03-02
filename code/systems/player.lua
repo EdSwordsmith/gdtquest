@@ -1,6 +1,6 @@
 local player = ecs.system({ pool = {"transform", "player"} })
 
-local PLAYER_SPEED = 150
+local PLAYER_SPEED = 160
 
 function player:update(dt)
     for _, e in ipairs(self.pool) do
@@ -16,6 +16,8 @@ function player:update(dt)
             e.transform.dy = -200
         end
     end
+
+    animations.player:update(dt)
 end
 
 return player

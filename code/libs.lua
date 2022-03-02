@@ -13,3 +13,6 @@ ecs = require 'libs.concord'
 
 -- Scene managment
 roomy = require 'libs.roomy'
+
+-- Animations
+anim8 = require 'libs.anim8'
