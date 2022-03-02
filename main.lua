@@ -1,6 +1,9 @@
 local ldtk = require 'libs.ldtk'
+local bump = require 'libs.bump'
+local bump_debug = require 'libs.bump_debug'
 
 local layers = {}
+local world = bump.newWorld(18)
 
 function love.load()
     --resizing the screen to 512px width and 512px height
@@ -12,7 +15,13 @@ function love.load()
 
     ldtk:load('assets/world.ldtk')
 
-    function ldtk.layer(layer) 
+    function ldtk.layer(layer)
+        if layer.identifier == "Tiles" then
+            for _, tile in ipairs(layer.tiles) do
+                local x, y = tile.px[1], tile.px[2]
+                world:add(tile, x, y, 18, 18)
+            end
+        end
         table.insert(layers, layer) --adding layer to the table we use to draw 
     end
 
@@ -30,4 +39,6 @@ function love.draw()
     for _, layer in ipairs(layers) do
         layer:draw()
     end
+
+    --bump_debug.draw(world)
 end
