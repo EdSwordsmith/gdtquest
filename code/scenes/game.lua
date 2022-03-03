@@ -1,9 +1,7 @@
-local map = require 'code.map'
-
-local gamescene = {}
+gamescene = {}
 
 function gamescene:enter(previous, ...)
-    map:load()
+    ldtk:goTo(1)
     camera:init()
 end
 
@@ -22,5 +20,3 @@ function gamescene:draw()
     love.graphics.pop()
     push.finish()
 end
-
-return gamescene

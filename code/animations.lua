@@ -9,3 +9,7 @@ end
 function animations:player()
     return anim8.newAnimation(self.grid('1-2', 1), 0.3)
 end
+
+function animations:winged()
+    return anim8.newAnimation(self.grid('7-9', 3), 0.2)
+end

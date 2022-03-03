@@ -16,7 +16,11 @@ function player:update(dt)
             e.transform.dy = -250
         end
 
-        camera:update(dt, e.transform.x)
+        camera:update(dt, e.transform.x, e.transform.y)
+        
+        if e.transform.y > 400 then
+            scene_manager:enter(gamescene)
+        end
     end
 end
 

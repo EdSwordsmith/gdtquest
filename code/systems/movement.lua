@@ -25,15 +25,4 @@ function movement:update(dt)
     end
 end
 
---[[
-function movement:draw(dt)
-    for _, e in ipairs(self.pool) do
-        local x = e.transform.x - e.transform.width / 2
-        local y = e.transform.y - e.transform.height / 2
-        love.graphics.setColor(1, 0, 0, 1)
-        love.graphics.rectangle('line', x, y, e.transform.width, e.transform.height)
-    end
-end
---]]
-
 return movement

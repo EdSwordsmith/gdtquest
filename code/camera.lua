@@ -1,14 +1,19 @@
 camera = {}
 
 function camera:init()
-    self.x, self.target_x = 128, 128
-    self.y = 128
-    self.w = 256
-    self.h = 256
-    self.speed = 2
+    self.w = push.getWidth()
+    self.h = push.getHeight()
+
+    self.x = self.w / 2
+    self.y = self.h / 2
+    self.target_x = self.x
+    self.target_y = self.y
+
+    self.speed_x = 4
+    self.speed_y = 4
 end
 
-function camera:update(dt, player_x)
+function camera:update(dt, player_x, player_y)
     if player_x > self.target_x + self.w / 2 then
         self.target_x = self.target_x + self.w
     elseif player_x < self.target_x - self.w / 2 then
@@ -16,7 +21,12 @@ function camera:update(dt, player_x)
     end
 
     if self.target_x ~= self.x then
-        self.x = self.x + (self.target_x - self.x) * dt * self.speed
+        self.x = self.x + (self.target_x - self.x) * dt * self.speed_x
+    end
+
+    self.target_y = player_y
+    if self.target_y ~= self.y then
+        self.y = self.y + (self.target_y - self.y) * dt * self.speed_y
     end
 end
 

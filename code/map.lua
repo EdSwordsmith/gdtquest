@@ -1,4 +1,4 @@
-local map = {}
+map = {}
 
 function map:load()
     self.layers = {}
@@ -6,11 +6,8 @@ function map:load()
     ldtk:load('assets/world.ldtk')
 
     function ldtk.entity(entity)
-        local e = ecs.entity(ecs_world)
-            :give('transform', entity.x, entity.y, entity.width, entity.height)
-
-        if entity.identifier == 'Player' then
-            e:give('player'):give('sprite', animations:player())
+        if prefabs[entity.identifier] then
+            prefabs[entity.identifier](entity)
         end
     end
 
@@ -31,8 +28,6 @@ function map:load()
         ecs_world:clear()
         love.graphics.setBackgroundColor(level.bgColor)
     end
-
-    ldtk:goTo(1)
 end
 
 function map:draw()
@@ -40,5 +35,3 @@ function map:draw()
         layer:draw()
     end
 end
-
-return map
