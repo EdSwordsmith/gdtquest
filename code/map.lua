@@ -1,7 +1,11 @@
 map = {}
 
+local LEVEL_COUNT = 2
+
 function map:load()
     self.layers = {}
+    self.deaths = 0
+    self.current_level = 1
 
     ldtk:load('assets/world.ldtk')
 
@@ -33,5 +37,19 @@ end
 function map:draw()
     for _, layer in ipairs(self.layers) do
         layer:draw()
+    end
+end
+
+function map:die()
+    self.deaths = self.deaths + 1
+    ldtk:goTo(self.current_level)
+end
+
+function map:win()
+    self.current_level = self.current_level + 1
+    if self.current_level <= LEVEL_COUNT then
+        ldtk:goTo(self.current_level)
+    else
+        scene_manager:enter(startscene)
     end
 end

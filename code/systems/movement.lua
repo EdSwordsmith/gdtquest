@@ -28,15 +28,17 @@ function movement:update(dt)
                         cols[i].other.alive = false
                         physics_world:remove(cols[i].other)
                     else
-                        scene_manager:enter(gamescene)
+                        map:die()
                     end
                 elseif e.transform.tag == 'enemy' and cols[i].other.tag == 'player' then
                     if cols[i].normal.y == 1 then
                         cols[i].other.alive = false
                         physics_world:remove(cols[i].other)
                     else
-                        scene_manager:enter(gamescene)
+                        map:die()
                     end
+                elseif e.transform.tag == 'player' and cols[i].other.tag == 'win' then
+                    map:win()
                 end
             end
         end

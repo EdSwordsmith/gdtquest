@@ -18,3 +18,8 @@ prefabs.Winged = function(entity)
         :give('sprite', animations:winged())
         :give('path', path)
 end
+
+prefabs.Win = function(entity)
+    ecs.entity(ecs_world)
+        :give('transform', entity.x, entity.y, entity.width, entity.height, 'win')
+end

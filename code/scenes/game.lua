@@ -13,6 +13,9 @@ function gamescene:leave(next, ...)
 end
 
 function gamescene:draw()
+    love.graphics.setFont(small_font)
+    love.graphics.print("Death Counter: " .. map.deaths, 0, 0)
+
     push.start()
     camera:apply()
     map:draw()
