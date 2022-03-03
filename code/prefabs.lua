@@ -2,7 +2,7 @@ prefabs = {}
 
 prefabs.Player = function(entity)
     ecs.entity(ecs_world)
-        :give('transform', entity.x, entity.y, entity.width, entity.height)
+        :give('transform', entity.x, entity.y, entity.width, entity.height, 'player')
         :give('player')
         :give('sprite', animations:player())
 end

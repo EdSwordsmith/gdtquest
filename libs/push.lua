@@ -106,7 +106,7 @@ local function start()
 		love.graphics.setCanvas(canvasOptions)
 	else
 		love.graphics.translate(offset.x, offset.y)
-		love.graphics.setScissor(offset.x, offset.y, pushWidth * scale.x, pushHeight * scale.y)
+		--love.graphics.setScissor(offset.x, offset.y, pushWidth * scale.x, pushHeight * scale.y)
 		love.graphics.push()
 		love.graphics.scale(scale.x, scale.y)
 	end
@@ -199,7 +199,7 @@ local function finish(shader)
 		love.graphics.setShader()
 	else
 		love.graphics.pop()
-		love.graphics.setScissor()
+		--love.graphics.setScissor()
 	end
 end
 

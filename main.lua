@@ -21,6 +21,7 @@ ecs_world:addSystems(
     systems.movement, 
     systems.player, 
     systems.follow_path,
+    systems.kill,
     systems.debug
 )
 

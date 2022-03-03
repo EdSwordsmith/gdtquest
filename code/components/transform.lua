@@ -1,4 +1,6 @@
-ecs.component("transform", function(component, x, y, width, height)
+ecs.component("transform", function(component, x, y, width, height, tag)
+    component.tag = tag or 'enemy'
+    component.alive = true
     component.x = x
     component.y = y
     component.width = width
