@@ -10,7 +10,7 @@ function map:load()
             :give('transform', entity.x, entity.y, entity.width, entity.height)
 
         if entity.identifier == 'Player' then
-            e:give('player')
+            e:give('player'):give('sprite', animations:player())
         end
     end
 
@@ -27,6 +27,8 @@ function map:load()
 
     function ldtk.onLevelLoad(level)
         self.layers = {}
+        physics_world = bump.newWorld(CELL_SIZE)
+        ecs_world:clear()
         love.graphics.setBackgroundColor(level.bgColor)
     end
 

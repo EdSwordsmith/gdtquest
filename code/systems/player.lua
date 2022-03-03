@@ -13,11 +13,9 @@ function player:update(dt)
         end
 
         if love.keyboard.isDown('space') and e.transform.on_ground then
-            e.transform.dy = -200
+            e.transform.dy = -250
         end
     end
-
-    animations.player:update(dt)
 end
 
 return player

@@ -1,6 +1,6 @@
 local movement = ecs.system({ pool = {"transform"} })
 
-local GRAVITY = 300
+local GRAVITY = 400
 
 function movement:update(dt)
     for _, e in ipairs(self.pool) do
@@ -34,5 +34,6 @@ function movement:draw(dt)
         love.graphics.rectangle('line', x, y, e.transform.width, e.transform.height)
     end
 end
+--]]
 
 return movement
