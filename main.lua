@@ -6,6 +6,7 @@ require 'code.camera'
 require 'code.prefabs'
 require 'code.scenes.start'
 require 'code.scenes.game'
+require 'code.scenes.finish'
 
 CELL_SIZE = 18
 

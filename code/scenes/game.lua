@@ -1,7 +1,7 @@
 gamescene = {}
 
 function gamescene:enter(previous, ...)
-    ldtk:goTo(1)
+    map:reset()
     camera:init()
 end
 

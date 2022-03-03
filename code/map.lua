@@ -1,14 +1,11 @@
 map = {}
 
-local LEVEL_COUNT = 2
+local LEVEL_COUNT = 1
 
 function map:load()
     self.layers = {}
-    self.deaths = 0
-    self.current_level = 1
 
     ldtk:load('assets/world.ldtk')
-
     function ldtk.entity(entity)
         if prefabs[entity.identifier] then
             prefabs[entity.identifier](entity)
@@ -34,6 +31,12 @@ function map:load()
     end
 end
 
+function map:reset()
+    self.deaths = 0
+    self.current_level = 1
+    ldtk:goTo(self.current_level)
+end
+
 function map:draw()
     for _, layer in ipairs(self.layers) do
         layer:draw()
@@ -50,6 +53,6 @@ function map:win()
     if self.current_level <= LEVEL_COUNT then
         ldtk:goTo(self.current_level)
     else
-        scene_manager:enter(startscene)
+        scene_manager:enter(finishscene)
     end
 end
