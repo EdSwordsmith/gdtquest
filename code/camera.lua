@@ -14,12 +14,15 @@ function camera:init()
 end
 
 function camera:update(dt, player_x, player_y)
+    --[[
     if player_x > self.target_x + self.w / 2 then
         self.target_x = self.target_x + self.w
     elseif player_x < self.target_x - self.w / 2 then
         self.target_x = self.target_x - self.w
     end
+    --]]
 
+    self.target_x = player_x
     if self.target_x ~= self.x then
         self.x = self.x + (self.target_x - self.x) * dt * self.speed_x
     end
