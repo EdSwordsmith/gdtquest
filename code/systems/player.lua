@@ -16,7 +16,7 @@ function player:update(dt)
             e.transform.dy = -250
         end
 
-        camera.x = e.transform.x
+        camera:update(dt, e.transform.x)
     end
 end
 

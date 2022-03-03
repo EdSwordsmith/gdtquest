@@ -8,7 +8,6 @@ function gamescene:enter(previous, ...)
 end
 
 function gamescene:update(dt)
-    camera.x = camera.x + 10 * dt
     ecs_world:emit("update", dt)
 end
 
