@@ -15,6 +15,8 @@ function player:update(dt)
         if love.keyboard.isDown('space') and e.transform.on_ground then
             e.transform.dy = -250
         end
+
+        camera.x = e.transform.x
     end
 end
 

@@ -1,6 +1,8 @@
 require 'code.libs'
 
 require 'code.animations'
+require 'code.camera'
+
 local startscene = require 'code.scenes.start'
 
 CELL_SIZE = 18

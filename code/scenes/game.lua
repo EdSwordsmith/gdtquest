@@ -4,9 +4,11 @@ local gamescene = {}
 
 function gamescene:enter(previous, ...)
     map:load()
+    camera:init()
 end
 
 function gamescene:update(dt)
+    camera.x = camera.x + 10 * dt
     ecs_world:emit("update", dt)
 end
 
@@ -15,8 +17,10 @@ end
 
 function gamescene:draw()
     push.start()
+    camera:apply()
     map:draw()
     ecs_world:emit("draw")
+    love.graphics.pop()
     push.finish()
 end
 
