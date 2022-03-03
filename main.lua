@@ -1,7 +1,7 @@
 require 'code.libs'
 
 require 'code.animations'
-local gamescene = require 'code.scenes.game'
+local startscene = require 'code.scenes.start'
 
 CELL_SIZE = 18
 
@@ -21,8 +21,11 @@ function love.load()
 
     animations:load()
 
+    big_font = love.graphics.newFont("assets/GammaRay.ttf", 100)
+    small_font = love.graphics.newFont("assets/GammaRay.ttf", 45)
+
     scene_manager:hook()
-    scene_manager:enter(gamescene)
+    scene_manager:enter(startscene)
 end
 
 function love.resize(width, height)
