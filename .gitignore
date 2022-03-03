@@ -2,3 +2,5 @@
 api/
 
 .DS_Store
+build/quest.zip
+build/quest.love
