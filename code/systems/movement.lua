@@ -32,8 +32,8 @@ function movement:update(dt)
                     end
                 elseif e.transform.tag == 'enemy' and cols[i].other.tag == 'player' then
                     if cols[i].normal.y == 1 then
-                        cols[i].other.alive = false
-                        physics_world:remove(cols[i].other)
+                        e.transform.alive = false
+                        physics_world:remove(e.transform)
                     else
                         map:die()
                     end
