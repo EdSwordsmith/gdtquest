@@ -1,9 +1,10 @@
 map = {}
 
-local LEVEL_COUNT = 1
+local LEVEL_COUNT = 3
 
 function map:load()
     self.layers = {}
+    self.death_line = 400
 
     ldtk:load('assets/world.ldtk')
     function ldtk.entity(entity)
@@ -24,6 +25,7 @@ function map:load()
     end
 
     function ldtk.onLevelLoad(level)
+        self.death_line = level.height + 200
         self.layers = {}
         physics_world = bump.newWorld(CELL_SIZE)
         ecs_world:clear()

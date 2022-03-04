@@ -18,7 +18,7 @@ function player:update(dt)
 
         camera:update(dt, e.transform.x, e.transform.y)
         
-        if e.transform.y > 400 then
+        if e.transform.y > map.death_line then
             map:die()
         end
     end
