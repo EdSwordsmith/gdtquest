@@ -15,7 +15,6 @@ function startscene:draw()
     map:draw()
     push:finish()
 
-    local screen_width = love.graphics.getWidth()
     love.graphics.setFont(big_font)
     love.graphics.print('The Quest', 0, 0)
     love.graphics.setFont(small_font)
