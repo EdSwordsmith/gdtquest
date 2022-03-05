@@ -27,6 +27,7 @@ function movement:update(dt)
                     if cols[i].normal.y == -1 then
                         cols[i].other.alive = false
                         physics_world:remove(cols[i].other)
+                        kill_sound:play()
                     else
                         map:die()
                     end
@@ -34,6 +35,7 @@ function movement:update(dt)
                     if cols[i].normal.y == 1 then
                         e.transform.alive = false
                         physics_world:remove(e.transform)
+                        kill_sound:play()
                     else
                         map:die()
                     end

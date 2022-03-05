@@ -31,6 +31,9 @@ function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
     push.setupScreen(384, 256, { upscale = 'pixel-perfect' })
 
+    jump_sound = love.audio.newSource('assets/jump.wav', 'static')
+    kill_sound = love.audio.newSource('assets/kill.wav', 'static')
+
     animations:load()
 
     big_font = love.graphics.newFont("assets/GammaRay.ttf", 100)

@@ -14,6 +14,7 @@ function player:update(dt)
 
         if love.keyboard.isDown('space') and e.transform.on_ground then
             e.transform.dy = -250
+            jump_sound:play()
         end
 
         camera:update(dt, e.transform.x, e.transform.y)

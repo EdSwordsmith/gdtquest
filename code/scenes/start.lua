@@ -17,7 +17,7 @@ function startscene:draw()
 
     local screen_width = love.graphics.getWidth()
     love.graphics.setFont(big_font)
-    love.graphics.printf('The Quest', 0, 100, screen_width, 'center')
+    love.graphics.print('The Quest', 0, 0)
     love.graphics.setFont(small_font)
-    love.graphics.printf('Press Enter to continue', 0, 300, screen_width, 'center')
+    love.graphics.print('Press Enter to continue', 0, 100)
 end
